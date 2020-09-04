@@ -2,40 +2,12 @@
 
 {{ partial "page-title.html" . }}
 
-<section class="section" style="background: #f5f5f5;">
-	<div class="container">
+<div class="page-wrapper">
+ 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="text-center">
-					<figure>
-						{{ if .Params.Photo }}
-						<img style="border-radius: 50%;" class="img-fluid" src="{{ .Params.Photo | relURL }}">
-						{{else if .Params.Email}}
-						<img style="border-radius: 50%;" class="img-fluid"
-							src="https://www.gravatar.com/avatar/{{ md5 .Params.email }}?s=128&pg&d=identicon">
-						{{ end }}
-						<figcaption>
-							<h5 class="font-weight-bold">
-								{{ .Params.Name }}
-							</h5>
-						</figcaption>
-					</figure>
-				</div>
-				<hr>
-				{{ .Content }}
-				<hr>
-				<div class="text-center">
-					<ul class="list-inline">
-						{{ range .Params.Social }}
-						<li class="list-inline-item"><a class="share-icon bg-secondary" href="{{ .link | safeURL}}"><i
-									class="{{ .icon }}"></i></a></li>
-						{{ end }}
-					</ul>
-				</div>
-			</div>
+		{{ .Content }}
 		</div>
-	</div>
-</section>
-
+   </div>
+</div>
 
 {{ end }}

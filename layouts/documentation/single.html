@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+{{ partial "page-banner.html" . }}
+
+<section class="page-wrapper">
+	<div class="container">
+		<div class="row">
+			{{ range .Parent.Data.Pages }}
+				  <h3><a href="{{ .Permalink }}">{{ .Weight }}. {{ .Title }}</a></h3>
+				<!-- {{  .TableOfContents }} doesnt not work well... needs css probably... --> 
+			{{ end }}
+		</div>
+		<!--- -->
+		<hr> 
+		<div class="row">
+			<div class="post">
+				<h1> <a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+				<div class="post-content">
+					<p>{{ .Content }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{{ end }}
