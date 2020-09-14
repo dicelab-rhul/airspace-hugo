@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {{ range .Data.Pages }}
+        <div class="post">
+            <div  class="col-md-8 col-md-offset-2" style="width: 100%;">
+              <div style="float: left; margin-right: 20px"> 
+                <figure>
+                  {{ if .Params.Photo }}
+                  <img style="border-radius: 10%; max-width:200px; " class="img-fluid" src="{{ .Params.Photo | relURL }}">
+                  {{else if .Params.Email}}
+                  <img style="border-radius: 10%;" class="img-fluid"
+                    src="https://www.gravatar.com/avatar/{{ md5 .Params.email }}?s=128&pg&d=identicon">
+                  {{ end }}
+                </figure>  
+              </div>
+
+              <div> 
+                <h3 class="post-title"><a> {{ .Title }}</a></h3>
+                <p>{{ .Params.Email }}</p>
+                <div class="post-content">
+                  <p>{{ .Summary }}</p>
+                </div>
+              </div>
+            </div>
+
+		  </div>
+        {{ end }}
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
