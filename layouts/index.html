@@ -32,7 +32,7 @@
 <section class="about section">
   <div class="container">
     <div class="row">
-      <div class="col-md-7 col-sm-12">
+      <div class="col-md-8 col-md-offset-2">
         <div class="block">
           <div class="section-title">
             <h2>{{ .title | markdownify }}</h2>
@@ -49,80 +49,56 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 <!-- /about -->
 {{ end }}
 {{ end }}
+
+{{ if $data.homepage.demos.enable }}
+{{ with $data.homepage.demos }}
+<!-- about -->
+<section class="about section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="block">
+          <div class="section-title">
+            <h2>{{ .title | markdownify }}</h2>
+          </div>
+          {{ range .demos }}
+            <h3> {{ .title }} </h3>
+            <div class="embed video-player">
+              <iframe class="youtube-player" type="text/html" width="640" height="385" src="https://www.youtube.com/embed/{{ .video }}" allowfullscreen frameborder="0">
+              </iframe>
+            </div>
+            <p> {{ .description }} </p>
+          {{ end }}
+         
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /about -->
+{{ end }}
+{{ end }}
+
+
+
 <div class="text-center">
   <img src="{{ site.Params.logorhul | absURL }}" style="height:80px; margin:10px;">
   <img src="{{ site.Params.logoEPSRC | absURL }}" style="height:80px; margin:10px">
 </div>
+
+
+
+
+
 <!-- portfolio
-
-<! -- attempt at embedding a video... 
-
-
-
-<div id="player" style="pointer-events:none; overflow: hidden; width:142px; height:200px;"></div>
-
-    <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          playerVars: {
-              'autoplay': 1,
-              'rel': 0,
-              'modestbranding': 1,
-              'playsinline': 1,
-              'showinfo': 0,
-              'rel': 0,
-              'controls': 0,
-              'color':'white',
-              'loop': 1,
-              'mute':1,
-              'autohide':1,
-          },
-          height: '390',
-          width: '640',
-          videoId: '7O9ws6Z4dQM',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange 
-          }
-        });
-      }
-
-      function onPlayerStateChange(event) {
-        switch(event.data) {
-          case 0:
-            player.playVideo()
-            break;
-          case 1:
-            break;
-          case 2:
-            break;
-        }
-      }
-
-      function onPlayerReady(event) {
-        player.playVideo();
-        player.mute(); //required for autoplay
-      }
-
-    </script>
-
-
-
 
 
 
